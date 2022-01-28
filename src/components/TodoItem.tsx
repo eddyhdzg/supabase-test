@@ -1,20 +1,15 @@
-// @ts-nocheck
-import { useState } from "react";
-import { supabase } from "lib/api";
+import { Todo } from "types";
+import { useUpdateTodo } from "hooks";
 
-const TodoItem = ({ todo, onDelete }) => {
-  const [isCompleted, setIsCompleted] = useState(todo.is_complete);
+interface TodoItemProps {
+  todo: Todo;
+  onDelete: () => void;
+}
 
-  const toggleCompleted = async () => {
-    const { data, error } = await supabase
-      .from("todos")
-      .update({ is_complete: !isCompleted })
-      .eq("id", todo.id)
-      .single();
-    if (error) {
-      console.error(error);
-    }
-    setIsCompleted(data.is_complete);
+const TodoItem = ({ todo, onDelete }: TodoItemProps) => {
+  const updateTodo = useUpdateTodo();
+  const handleToggleCompleted = () => {
+    updateTodo.mutate({ id: todo.id || "", is_complete: !todo.is_complete });
   };
 
   return (
@@ -22,12 +17,14 @@ const TodoItem = ({ todo, onDelete }) => {
       <span className={"truncate flex-grow"}>
         <input
           className="cursor-pointer mr-2"
-          onChange={toggleCompleted}
+          onChange={handleToggleCompleted}
           type="checkbox"
-          checked={isCompleted ? true : ""}
+          checked={todo.is_complete}
         />
         <span
-          className={`w-full flex-grow ${isCompleted ? "line-through" : ""}`}
+          className={`w-full flex-grow ${
+            todo.is_complete ? "line-through" : ""
+          }`}
         >
           {todo.task}
         </span>

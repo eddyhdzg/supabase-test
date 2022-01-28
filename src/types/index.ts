@@ -5,3 +5,10 @@ export interface Todo {
   is_complete?: boolean;
   inserted_at?: any;
 }
+
+export type AuthAction = "REGISTER" | "LOGIN";
+
+export interface HelperText {
+  error: boolean | null;
+  text: string | null;
+}
