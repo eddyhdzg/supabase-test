@@ -1,9 +1,10 @@
 import { Layout } from "layout";
-import { Auth, Home } from "organisms";
-import { useUser } from "hooks";
+import { Router } from "router";
 
 export default function App() {
-  const user = useUser();
-
-  return <Layout>{!user ? <Auth /> : <Home user={user} />}</Layout>;
+  return (
+    <Layout>
+      <Router />
+    </Layout>
+  );
 }

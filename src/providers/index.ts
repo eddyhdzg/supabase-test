@@ -1,1 +1,1 @@
-export { default as ReactQueryProvider } from "./ReactQueryProvider";
+export { default as ProvidersWrapper } from "./ProvidersWrapper";

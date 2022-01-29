@@ -8,19 +8,15 @@ interface createTodoProps {
 }
 
 const createTodo = async (task: string, user_id: string) => {
-  if (task.length) {
-    const { data, error } = await supabase
-      .from<Todo>("todos")
-      .insert({ task, user_id })
-      .single();
+  const { data, error } = await supabase
+    .from<Todo>("todos")
+    .insert({ task, user_id })
+    .single();
 
-    if (error) {
-      throw new Error(error.message);
-    }
-    return data;
+  if (error) {
+    throw new Error(error.message);
   }
-
-  return null;
+  return data;
 };
 
 export default function useCreateTodo() {

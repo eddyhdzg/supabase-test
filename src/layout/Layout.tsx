@@ -1,13 +1,36 @@
-import { Nav } from "organisms";
+import { Notch } from "components";
+import { useState, useEffect } from "react";
+import { useBreakpoint } from "hooks";
+import { Navbar, MobileAppbar, Drawer } from "components";
+import { Main, DrawerHeader } from "./Layout.styled";
+import { Box } from "@mui/material";
 
 const Layout: React.FC = ({ children }) => {
+  const [open, setOpen] = useState(false);
+  const sm = useBreakpoint("sm");
+
+  useEffect(() => {
+    if (open && !sm) {
+      setOpen(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sm]);
+
+  const handleDrawerToggle = () => {
+    setOpen(!open);
+  };
+
   return (
-    <div className="dark">
-      <div className="min-w-full min-h-screen dark:bg-zinc-900 flex flex-col">
-        <Nav />
+    <Box sx={{ display: "flex" }}>
+      <Notch />
+      <Navbar open={open} onDrawerToggle={handleDrawerToggle} />
+      <MobileAppbar />
+      <Drawer open={open} />
+      <Main open={open}>
+        <DrawerHeader />
         {children}
-      </div>
-    </div>
+      </Main>
+    </Box>
   );
 };
 
