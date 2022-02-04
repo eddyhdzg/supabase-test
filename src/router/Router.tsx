@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import { Customers, Customer } from "pages";
+import { CustomersPage, CustomerPage } from "pages";
 
 export default function Router() {
   return (
     <Routes>
-      <Route path="/customers" element={<Customers />} />
-      <Route path="/customers/:id" element={<Customer />} />
+      <Route path="/customers" element={<CustomersPage />} />
+      <Route path="/customers/:id" element={<CustomerPage />} />
     </Routes>
   );
 }

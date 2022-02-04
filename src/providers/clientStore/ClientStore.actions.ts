@@ -5,4 +5,9 @@ export interface BackButton_Change_Data {
   payload: BackButton;
 }
 
-export type Actions = BackButton_Change_Data;
+export interface Customers_Change_Input {
+  type: "CUSTOMERS_CHANGE_INPUT";
+  payload: string;
+}
+
+export type Actions = BackButton_Change_Data | Customers_Change_Input;

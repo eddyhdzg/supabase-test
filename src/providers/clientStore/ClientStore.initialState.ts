@@ -2,6 +2,7 @@ import { BackButton } from "types";
 
 export type ClientState = {
   backButton: BackButton;
+  customers: string;
 };
 
 export const initialClientState: ClientState = {
@@ -9,4 +10,5 @@ export const initialClientState: ClientState = {
     text: undefined,
     url: undefined,
   },
+  customers: "",
 };

@@ -1,33 +1,5 @@
 import { styled, alpha } from "@mui/material/styles";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import { InputBase, inputBaseClasses } from "@mui/material";
-import { drawerWidth } from "constant";
-
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
-
-export const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})<AppBarProps>(({ theme, open }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-  paddingTop: "env(safe-area-inset-top)",
-  paddingBottom: theme.spacing(1),
-  [theme.breakpoints.up("xs")]: {
-    paddingBottom: theme.spacing(0),
-  },
-}));
 
 export const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -65,12 +37,8 @@ export const StyledInputBase = styled(InputBase)(({ theme }) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
-
     [theme.breakpoints.up("xs")]: {
-      width: "16ch",
-      "&:focus": {
-        width: "24ch",
-      },
+      width: "14ch",
     },
     [theme.breakpoints.up("sm")]: {
       width: "20ch",

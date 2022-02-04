@@ -7,7 +7,7 @@ export const Main = styled("main", {
   open?: boolean;
 }>(({ theme, open }) => ({
   flexGrow: 1,
-  padding: theme.spacing(3),
+
   transition: theme.transitions.create("margin", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -20,10 +20,9 @@ export const Main = styled("main", {
     }),
     marginLeft: 0,
   }),
-  paddingTop: theme.spacing(9),
-  paddingBottom: theme.spacing(8),
+  padding: theme.spacing(9, 2, 8),
   [theme.breakpoints.up("xs")]: {
-    paddingTop: theme.spacing(3),
+    padding: theme.spacing(3),
   },
   [theme.breakpoints.up("sm")]: {
     paddingBottom: theme.spacing(6),

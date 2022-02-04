@@ -6,6 +6,9 @@ const reducer = (draft: ClientState, action: Actions) => {
     case "BACKBUTTON_CHANGE_DATA":
       draft.backButton = action.payload;
       break;
+    case "CUSTOMERS_CHANGE_INPUT":
+      draft.customers = action.payload;
+      break;
     default:
       throw new Error("Invalid action type");
   }

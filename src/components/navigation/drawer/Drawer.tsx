@@ -4,8 +4,9 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { DrawerHeader } from "./Drawer.styled";
 import { links, drawerWidth } from "constant";
+import { Link } from "react-router-dom";
+import { DrawerHeader } from "./Drawer.styled";
 
 interface DrawerProps {
   open: boolean;
@@ -30,7 +31,7 @@ export default function Drawer({ open }: DrawerProps) {
       <Divider />
       <List>
         {links.map((link) => (
-          <ListItem button key={link.route}>
+          <ListItem button key={link.route} component={Link} to={link.href}>
             <ListItemIcon>{<link.Icon />}</ListItemIcon>
             <ListItemText primary={link.route} />
           </ListItem>

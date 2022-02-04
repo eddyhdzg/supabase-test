@@ -35,3 +35,9 @@ button {
 iframe {
   color-scheme: light;
 }
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}

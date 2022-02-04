@@ -1,7 +1,7 @@
 import { Notch } from "components";
 import { useState, useEffect } from "react";
 import { useBreakpoint } from "hooks";
-import { Navbar, MobileAppbar, Drawer } from "components";
+import { Header, MobileAppbar, Drawer } from "components";
 import { Main, DrawerHeader } from "./Layout.styled";
 import { Box } from "@mui/material";
 
@@ -23,7 +23,7 @@ const Layout: React.FC = ({ children }) => {
   return (
     <Box sx={{ display: "flex" }}>
       <Notch />
-      <Navbar open={open} onDrawerToggle={handleDrawerToggle} />
+      <Header open={open} onDrawerToggle={handleDrawerToggle} />
       <MobileAppbar />
       <Drawer open={open} />
       <Main open={open}>

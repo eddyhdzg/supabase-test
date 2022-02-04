@@ -20,7 +20,10 @@ export default function stringAvatar(name: string) {
   return {
     sx: {
       bgcolor: stringToColor(name),
+      textTransform: "uppercase",
     },
-    children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
+    children: `${name.split(" ")[0][0]?.toUpperCase() || ""}${
+      name.split(" ")[1][0]?.toUpperCase() || ""
+    }`,
   };
 }

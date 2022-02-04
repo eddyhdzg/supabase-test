@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import {
   StyledAppBar,
   StyledBottomNavigation,
@@ -10,7 +8,6 @@ import { NavLink, useLocation } from "react-router-dom";
 import { TBaseRoutes } from "types";
 
 export default function MobileAppbar() {
-  const [value, setValue] = useState("recents");
   const routerTree = useRouterTree();
   const memoryRoute = useMemoryRoute();
   const { pathname } = useLocation();

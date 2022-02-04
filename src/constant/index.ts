@@ -27,3 +27,15 @@ export const links = [
     route: "Ingredients",
   },
 ];
+
+export const customersSearchFilters = [
+  "_id",
+  "firstName",
+  "lastName",
+  "email",
+  "street",
+  "zipCode",
+  "state",
+  "phoneNumber",
+  "customerSID",
+];
