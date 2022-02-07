@@ -29,6 +29,7 @@ export default function MobileAppbar() {
             component={NavLink}
             to={memoryRoute(route as TBaseRoutes)}
             label={title}
+            value={route}
             icon={
               <Icon
                 sx={{

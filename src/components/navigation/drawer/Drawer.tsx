@@ -1,18 +1,24 @@
 import MUIDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { links, drawerWidth } from "constant";
-import { Link } from "react-router-dom";
+import { drawerWidth } from "constant";
+import { NavLink, useLocation } from "react-router-dom";
 import { DrawerHeader } from "./Drawer.styled";
+import { useRouterTree, useMemoryRoute } from "hooks";
+import { TBaseRoutes } from "types";
 
 interface DrawerProps {
   open: boolean;
 }
 
 export default function Drawer({ open }: DrawerProps) {
+  const routerTree = useRouterTree();
+  const memoryRoute = useMemoryRoute();
+  const { pathname } = useLocation();
+
   return (
     <MUIDrawer
       sx={{
@@ -30,11 +36,22 @@ export default function Drawer({ open }: DrawerProps) {
       <DrawerHeader />
       <Divider />
       <List>
-        {links.map((link) => (
-          <ListItem button key={link.route} component={Link} to={link.href}>
-            <ListItemIcon>{<link.Icon />}</ListItemIcon>
-            <ListItemText primary={link.route} />
-          </ListItem>
+        {Object.entries(routerTree).map(([route, { Icon, title }]) => (
+          <ListItemButton
+            key={route}
+            component={NavLink}
+            to={memoryRoute(route as TBaseRoutes)}
+            selected={route === pathname}
+          >
+            <ListItemIcon
+              sx={{
+                ml: "env(safe-area-inset-left)",
+              }}
+            >
+              {<Icon />}
+            </ListItemIcon>
+            <ListItemText primary={title} />
+          </ListItemButton>
         ))}
       </List>
     </MUIDrawer>

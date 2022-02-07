@@ -45,6 +45,8 @@ export default function Header({ open, onDrawerToggle }: HeaderProps) {
         <AppBar position="fixed" open={open}>
           <Toolbar
             sx={{
+              pt: "calc(8px + env(safe-area-inset-top))",
+              pb: 1,
               flexWrap: "wrap",
               justifyContent: {
                 xxs: "space-between",
@@ -65,7 +67,6 @@ export default function Header({ open, onDrawerToggle }: HeaderProps) {
                 size="large"
                 sx={{
                   mr: 1,
-
                   display: {
                     xxs: "none",
                     xs: "inline-flex",
@@ -95,7 +96,6 @@ export default function Header({ open, onDrawerToggle }: HeaderProps) {
                   xxs: 3,
                   xs: 2,
                 },
-
                 width: {
                   xxs: "100%",
                   xs: "unset",
@@ -105,10 +105,6 @@ export default function Header({ open, onDrawerToggle }: HeaderProps) {
                 },
                 mr: {
                   xs: 2,
-                },
-                mb: {
-                  xxs: 1,
-                  xs: 0,
                 },
               }}
             >

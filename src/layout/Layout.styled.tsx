@@ -2,12 +2,13 @@ import { styled } from "@mui/material/styles";
 import { drawerWidth } from "constant";
 
 export const Main = styled("main", {
-  shouldForwardProp: (prop) => prop !== "open",
+  shouldForwardProp: (prop) => prop !== "open" && prop !== "hasBottomSearch",
 })<{
   open?: boolean;
-}>(({ theme, open }) => ({
+  hasBottomSearch?: boolean;
+}>(({ theme, open, hasBottomSearch }) => ({
+  minHeight: "100vh",
   flexGrow: 1,
-
   transition: theme.transitions.create("margin", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -20,12 +21,17 @@ export const Main = styled("main", {
     }),
     marginLeft: 0,
   }),
-  padding: theme.spacing(9, 2, 8),
+  paddingTop: hasBottomSearch ? theme.spacing(9) : theme.spacing(3),
+  paddingLeft: theme.spacing(2),
+  paddingRight: theme.spacing(2),
+  paddingBottom: theme.spacing(10),
   [theme.breakpoints.up("xs")]: {
-    padding: theme.spacing(3),
+    paddingLeft: theme.spacing(3),
+    paddingRight: theme.spacing(3),
+    paddingTop: theme.spacing(3),
   },
   [theme.breakpoints.up("sm")]: {
-    paddingBottom: theme.spacing(6),
+    paddingBottom: theme.spacing(3),
   },
 }));
 

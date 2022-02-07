@@ -22,7 +22,6 @@ export const AppBar = styled(MuiAppBar, {
       duration: theme.transitions.duration.enteringScreen,
     }),
   }),
-  paddingTop: "env(safe-area-inset-top)",
 }));
 
 export const Search = styled("div")(({ theme }) => ({

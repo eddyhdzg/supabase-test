@@ -1,6 +1,6 @@
 import { Notch } from "components";
 import { useState, useEffect } from "react";
-import { useBreakpoint } from "hooks";
+import { useBreakpoint, useHasBottomSearch } from "hooks";
 import { Header, MobileAppbar, Drawer } from "components";
 import { Main, DrawerHeader } from "./Layout.styled";
 import { Box } from "@mui/material";
@@ -8,6 +8,7 @@ import { Box } from "@mui/material";
 const Layout: React.FC = ({ children }) => {
   const [open, setOpen] = useState(false);
   const sm = useBreakpoint("sm");
+  const hasBottomSearch = useHasBottomSearch();
 
   useEffect(() => {
     if (open && !sm) {
@@ -26,7 +27,7 @@ const Layout: React.FC = ({ children }) => {
       <Header open={open} onDrawerToggle={handleDrawerToggle} />
       <MobileAppbar />
       <Drawer open={open} />
-      <Main open={open}>
+      <Main open={open} hasBottomSearch={hasBottomSearch}>
         <DrawerHeader />
         {children}
       </Main>

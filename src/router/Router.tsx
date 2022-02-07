@@ -6,6 +6,7 @@ export default function Router() {
     <Routes>
       <Route path="/customers" element={<CustomersPage />} />
       <Route path="/customers/:id" element={<CustomerPage />} />
+      <Route path="/recipes" element={<CustomersPage />} />
     </Routes>
   );
 }

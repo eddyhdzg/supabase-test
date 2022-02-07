@@ -1,10 +1,3 @@
-import { useEffect, useMemo } from "react";
-import {
-  useTable,
-  useFilters,
-  useGlobalFilter,
-  useAsyncDebounce,
-} from "react-table";
 import {
   Avatar,
   List,
@@ -16,65 +9,27 @@ import {
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Link } from "react-router-dom";
 import { stringAvatar } from "utils";
-import {
-  useCustomers,
-  useStore,
-  useCustomersColumns,
-  useFuzzyGlobalFilter,
-} from "hooks";
-import { fuzzyTextFilterFn } from "utils";
-import { customersSearchFilters } from "constant";
+import { useCustomers, useCustomersTable } from "hooks";
 import { Customer } from "types";
+import { Row } from "react-table";
 
-interface TableProps {
+interface CustomersTemplateProps {
   data: Customer[];
 }
 
-function CustomersTemplate({ data }: TableProps) {
-  const columns = useCustomersColumns();
-  const globalFilter = useFuzzyGlobalFilter(customersSearchFilters);
-  const filterTypes = useMemo(
-    () => ({
-      fuzzyText: fuzzyTextFilterFn,
-    }),
-    []
-  );
-
-  const { rows, setGlobalFilter } = useTable<Customer>(
-    {
-      // @ts-ignore
-      columns,
-      data,
-      globalFilter,
-      filterTypes,
-    },
-    useFilters,
-    useGlobalFilter
-  );
-
-  const { customers } = useStore(({ customers }) => ({ customers }));
-
-  const performantGlobalChange = useAsyncDebounce((value) => {
-    setGlobalFilter(value);
-  }, 200);
-
-  useEffect(() => {
-    setGlobalFilter(customers);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
-
-  useEffect(() => {
-    performantGlobalChange(customers);
-  }, [customers, performantGlobalChange]);
-
+function CustomersTemplate({ data }: CustomersTemplateProps) {
+  const { rows } = useCustomersTable(data);
   return (
     <>
       <Typography variant="h3" gutterBottom>
-        Customers {customers}
+        Customers
       </Typography>
       <List
         sx={{
-          mx: -3,
+          mx: {
+            xxs: -2,
+            xs: -3,
+          },
         }}
       >
         {rows?.map(

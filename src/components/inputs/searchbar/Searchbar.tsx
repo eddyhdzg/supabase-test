@@ -1,39 +1,29 @@
-import { useState, useEffect } from "react";
+import { ChangeEvent } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import { useLocation } from "react-router-dom";
-import { useStore } from "hooks";
+import { useHasBottomSearch } from "hooks";
 import { Search, SearchIconWrapper, StyledInputBase } from "./Searchbar.styled";
-import shallow from "zustand/shallow";
+import { useSearchParams } from "react-router-dom";
 
 export default function Searchbar() {
-  const { pathname } = useLocation();
-  const [hide, setHide] = useState(true);
-  const urls = new Set<string>(["/customers"]);
-  const { customers, dispatch } = useStore(
-    ({ customers, dispatch }) => ({ customers, dispatch }),
-    shallow
-  );
+  const [searchParams, setSearchParams] = useSearchParams();
+  const hasBottomSearch = useHasBottomSearch();
+  const search = searchParams.get("search") || "";
 
-  const onChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    dispatch({ type: "CUSTOMERS_CHANGE_INPUT", payload: e.target.value });
-  };
-
-  useEffect(() => {
-    if (urls.has(pathname)) {
-      setHide(false);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value) {
+      setSearchParams({
+        search: e.target.value,
+      });
     } else {
-      setHide(true);
+      setSearchParams({});
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
+  };
 
   return (
     <>
       <Search
         sx={{
-          display: hide ? "none" : undefined,
+          display: hasBottomSearch ? undefined : "none",
         }}
       >
         <SearchIconWrapper>
@@ -42,8 +32,8 @@ export default function Searchbar() {
         <StyledInputBase
           placeholder="Search…"
           inputProps={{ "aria-label": "search" }}
-          onChange={onChange}
-          value={customers}
+          value={search}
+          onChange={handleChange}
         />
       </Search>
     </>
