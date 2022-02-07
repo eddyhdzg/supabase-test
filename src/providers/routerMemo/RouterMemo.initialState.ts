@@ -10,5 +10,6 @@ export const initialRouterMemoState: RouterMemoState = {
     "/customers": "/customers",
     "/recipes": "/recipes",
     "/ingredients": "/ingredients",
+    "/more": "/more",
   },
 };

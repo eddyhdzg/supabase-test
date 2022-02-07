@@ -1,9 +1,10 @@
 import { useMemo } from "react";
 import { Column } from "react-table";
+import { Customer } from "types";
 
 const useCustomersColumns = () => {
-  const columns: Column<object>[] = useMemo(() => {
-    const customerColumns = [
+  const columns: Column<object>[] = useMemo(
+    () => [
       {
         id: "_id",
         Header: "id",
@@ -44,11 +45,10 @@ const useCustomersColumns = () => {
         Header: "customerSID",
         accessor: "customerSID",
       },
-    ];
-
-    return customerColumns;
-  }, []);
-  return columns;
+    ],
+    []
+  );
+  return columns as readonly Column<Customer>[];
 };
 
 export default useCustomersColumns;

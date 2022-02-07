@@ -4,6 +4,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PeopleIcon from "@mui/icons-material/People";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import FastfoodIcon from "@mui/icons-material/Fastfood";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 export type RouterTree = {
   [key: string]: {
@@ -31,6 +32,10 @@ const useRouterTree = () => {
     "/ingredients": {
       title: "Ingredients",
       Icon: FastfoodIcon,
+    },
+    "/more": {
+      title: "More",
+      Icon: MoreHorizIcon,
     },
   };
 

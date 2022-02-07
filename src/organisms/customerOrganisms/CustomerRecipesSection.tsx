@@ -26,10 +26,10 @@ export default function CustomerRecipesSection({
           overflowWrap: "break-word",
         }}
       >
-        {recipes?.map((recipes, i) => {
+        {recipes?.map((recipe, i) => {
           return (
             <Box
-              key={title}
+              key={recipe}
               component="li"
               sx={{
                 display: "flex",
@@ -38,7 +38,7 @@ export default function CustomerRecipesSection({
               }}
             >
               <Typography variant="subtitle2" gutterBottom>
-                {i + 1} - {recipes}
+                {i + 1} - {recipe}
               </Typography>
             </Box>
           );

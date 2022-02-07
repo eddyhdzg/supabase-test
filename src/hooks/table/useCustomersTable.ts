@@ -5,7 +5,7 @@ import {
   useGlobalFilter,
   useAsyncDebounce,
 } from "react-table";
-import { useCustomers, useCustomersColumns, useFuzzyGlobalFilter } from "hooks";
+import { useCustomersColumns, useFuzzyGlobalFilter } from "hooks";
 import { fuzzyTextFilterFn } from "utils";
 import { customersSearchFilters } from "constant";
 import { Customer } from "types";
@@ -27,7 +27,6 @@ export default function useCustomersTable(data: useCustomersTableProps) {
 
   const { rows, setGlobalFilter } = useTable<Customer>(
     {
-      // @ts-ignore
       columns,
       data,
       globalFilter,

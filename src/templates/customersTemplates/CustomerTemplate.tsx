@@ -4,7 +4,7 @@ import { CenterLoader } from "components";
 import { useParams } from "react-router-dom";
 import { stringAvatar } from "utils";
 import { CustomerSection, CustomerRecipesSection } from "organisms";
-import useCustomerData from "./useCustomerData";
+import { useCustomerData } from "hooks";
 
 export default function Customer() {
   const { id } = useParams();

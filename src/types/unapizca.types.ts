@@ -3,6 +3,7 @@ import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 type ISOString = string;
 
+// FIXME
 export interface Todo {
   id?: string;
   user_id?: string;
@@ -48,36 +49,13 @@ export interface CustomerRow {
   text: string | undefined;
 }
 
-export interface CustomerOrder {
-  // Primary Data
-  // city?: string;
-  // country?: string;
-  // email?: string;
-  // firstName?: string;
-  // lastName?: string;
-  // phoneNumber?: number;
-  // state?: string;
-  // street?: string;
-  // zipCode?: number;
-  // subscriptionStatus?: "ACTIVE" | string;
-  // Customer Data
-  // customerId?: string;
-  // _id?: string;
-  // _owner?: string;
-  // subscriptionId?: string;
-  // Dates
-  // birthDate?: ISOString;
-  // _createdDate?: ISOString;
-  // _updatedDate?: ISOString;
-  // Payment Method
-  // cardType?: string;
-  // lastFour?: number;
-  // Plan
-  // lateActivation?: boolean;
-  // lateSat?: ISOString;
-  // numPortions?: number;
-  // numRecipes?: number;
-  // planId?: string;
-  // planName?: string;
-  // recipes?: string[];
+export interface Quantity {
+  id?: string;
+  quantity?: number;
+}
+
+export interface QuantityRowData {
+  id?: string;
+  quantity?: number;
+  usedIn?: string;
 }
