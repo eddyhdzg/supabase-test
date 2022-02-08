@@ -8,32 +8,31 @@ import {
   Paper,
   TableContainer,
 } from "@mui/material";
-import { useQuantitiesRowData, useQuantitiesTable } from "hooks";
+import { useUnitsRowData, useUnitsTable } from "hooks";
 import { HeaderGroup, Cell } from "react-table";
-import { QuantityRowData } from "types";
-import { CreateQuantityForm } from "forms";
+import { UnitRowData } from "types";
+import { CreateUnitForm } from "forms";
 
-export default function QuantitiesTemplate() {
-  const { data = [] } = useQuantitiesRowData();
+export default function UnitsTemplate() {
+  const { data = [] } = useUnitsRowData();
 
   return (
     <>
       <Typography variant="h3" gutterBottom>
-        Quantities
+        Units
       </Typography>
-      <QuantitiesTable data={data} />
-      <CreateQuantityForm />
+      <UnitsTable data={data} />
+      <CreateUnitForm />
     </>
   );
 }
 
-interface QuantitiesTableProps {
-  data: QuantityRowData[];
+interface UnitsTableProps {
+  data: UnitRowData[];
 }
 
-function QuantitiesTable({ data }: QuantitiesTableProps) {
-  const { getTableProps, headerGroups, rows, prepareRow } =
-    useQuantitiesTable(data);
+function UnitsTable({ data }: UnitsTableProps) {
+  const { getTableProps, headerGroups, rows, prepareRow } = useUnitsTable(data);
 
   return (
     <Paper elevation={3}>
@@ -48,13 +47,13 @@ function QuantitiesTable({ data }: QuantitiesTableProps) {
           },
         }}
       >
-        <Table aria-label="quantities table" {...getTableProps()}>
+        <Table aria-label="units table" {...getTableProps()}>
           <TableHead>
             {headerGroups.map((headerGroup) => (
               <TableRow {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map(
                   (
-                    column: HeaderGroup<QuantityRowData> & {
+                    column: HeaderGroup<UnitRowData> & {
                       tabIndex?: number;
                       className?: string;
                     }
@@ -91,7 +90,7 @@ function QuantitiesTable({ data }: QuantitiesTableProps) {
                 <TableRow {...row.getRowProps()}>
                   {row.cells.map(
                     (
-                      cell: Cell<QuantityRowData> & {
+                      cell: Cell<UnitRowData> & {
                         column: {
                           className?: string;
                         };

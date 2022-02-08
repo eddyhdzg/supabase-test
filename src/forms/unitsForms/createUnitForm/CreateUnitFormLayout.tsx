@@ -15,21 +15,21 @@ import { TransitionProps } from "@mui/material/transitions";
 import AddIcon from "@mui/icons-material/Add";
 import { useTheme } from "@mui/material/styles";
 import { Controller, useFormContext } from "react-hook-form";
-import { NumberFormatInput } from "components";
 import { SubmitForm } from "types";
-import { CreateQuantitySchema } from "hooks";
+import { Transition } from "components";
+import { CreateUnitSchema } from "hooks";
 
-interface CreateQuantityFormLayoutProps {
+interface CreateUnitFormLayoutProps {
   onSubmit: SubmitForm;
 }
 
-export default function CreateQuantityFormLayout({
+export default function CreateUnitFormLayout({
   onSubmit,
-}: CreateQuantityFormLayoutProps) {
+}: CreateUnitFormLayoutProps) {
   const {
     control,
     formState: { isValid },
-  } = useFormContext<CreateQuantitySchema>();
+  } = useFormContext<CreateUnitSchema>();
 
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -67,7 +67,7 @@ export default function CreateQuantityFormLayout({
             right: 16,
           }}
           color="secondary"
-          aria-label="create-quantity"
+          aria-label="create-unit"
           onClick={handleClickOpen}
         >
           <AddIcon />
@@ -78,31 +78,22 @@ export default function CreateQuantityFormLayout({
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
-        aria-describedby="create-quantity-dialog"
+        aria-describedby="create-unit-dialog"
         maxWidth="xs"
       >
         <form noValidate autoComplete="off" onSubmit={onSubmit}>
-          <DialogTitle>Create new quantity</DialogTitle>
+          <DialogTitle>Create new unit</DialogTitle>
           <DialogContent>
             <Controller
-              name="quantity"
+              name="unit"
               control={control}
               render={({ field, fieldState }) => {
                 return (
                   <FormControl>
                     <TextField
-                      id="quantity-input"
+                      id="unit-input"
                       variant="outlined"
                       error={Boolean(fieldState.error)}
-                      inputProps={{
-                        inputMode: "decimal",
-                        min: 0,
-                        thousandSeparator: true,
-                        decimalScale: 4,
-                      }}
-                      InputProps={{
-                        inputComponent: NumberFormatInput as any,
-                      }}
                       sx={{
                         mt: 2,
                       }}
@@ -129,12 +120,3 @@ export default function CreateQuantityFormLayout({
     </>
   );
 }
-
-const Transition = forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement<any, any>;
-  },
-  ref: React.Ref<unknown>
-) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});

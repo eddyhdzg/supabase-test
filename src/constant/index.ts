@@ -13,3 +13,4 @@ export const customersSearchFilters = [
 ];
 
 export const quantitiesSearchFilters = ["id", "quantity", "usedIn"];
+export const unitsSearchFilters = ["id", "units", "usedIn"];

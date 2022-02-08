@@ -2,6 +2,8 @@ import { useMutation, useQueryClient } from "react-query";
 import { supabase } from "lib/api";
 import { Quantity } from "types";
 import { useSnackbar } from "notistack";
+import { UpdateQuantitySchema } from "hooks";
+import { UseFormReset } from "react-hook-form";
 
 const createQuantity = async (quantity?: number) => {
   const { data, error } = await supabase
@@ -24,7 +26,9 @@ const createQuantity = async (quantity?: number) => {
   return data;
 };
 
-export default function useCreateQuantity() {
+export default function useCreateQuantity(
+  reset: UseFormReset<UpdateQuantitySchema>
+) {
   const queryClient = useQueryClient();
   const { enqueueSnackbar } = useSnackbar();
   return useMutation(
@@ -59,6 +63,7 @@ export default function useCreateQuantity() {
         }
       },
       onSettled: () => {
+        reset();
         queryClient.invalidateQueries("quantities");
         queryClient.invalidateQueries("quantitiesRowData");
       },

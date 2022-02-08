@@ -60,7 +60,6 @@ export default function useUpdateQuantity(
       enqueueSnackbar(`Error: quantity with id ${quantity.id} not edited 😔 `, {
         variant: "error",
       });
-      reset();
       if (context?.previousQuantities) {
         queryClient.setQueryData<QuantityRowData[]>(
           "quantitiesRowData",
@@ -69,6 +68,7 @@ export default function useUpdateQuantity(
       }
     },
     onSettled: () => {
+      reset();
       queryClient.invalidateQueries("quantities");
       queryClient.invalidateQueries("quantitiesRowData");
     },

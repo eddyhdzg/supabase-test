@@ -15,7 +15,7 @@ export default function UpdateQuantityForm({ id = "", quantity }: Quantity) {
 
   useEffect(() => {
     const defaultValues: UpdateQuantitySchema =
-      { quantity } ?? updateQuantityDefaultValues;
+      quantity !== undefined ? { quantity } : updateQuantityDefaultValues;
     reset(defaultValues);
   }, [reset, quantity]);
 

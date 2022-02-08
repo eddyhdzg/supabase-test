@@ -4,7 +4,7 @@ import CreateQuantityFormLayout from "./CreateQuantityFormLayout";
 
 export default function CreateQuantityForm() {
   const form = useCreateQuantityForm();
-  const createQuantity = useCreateQuantity();
+  const createQuantity = useCreateQuantity(form.reset);
 
   const onSubmit = form.handleSubmit((values, e) => {
     e?.preventDefault();

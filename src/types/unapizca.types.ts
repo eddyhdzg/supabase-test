@@ -3,15 +3,6 @@ import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 type ISOString = string;
 
-// FIXME
-export interface Todo {
-  id?: string;
-  user_id?: string;
-  task?: string;
-  is_complete?: boolean;
-  inserted_at?: any;
-}
-
 export interface Customer {
   birthDate?: ISOString;
   cardType?: string;
@@ -57,5 +48,16 @@ export interface Quantity {
 export interface QuantityRowData {
   id?: string;
   quantity?: number;
+  usedIn?: string;
+}
+
+export interface Unit {
+  id?: string;
+  unit?: string;
+}
+
+export interface UnitRowData {
+  id?: string;
+  unit?: string;
   usedIn?: string;
 }
