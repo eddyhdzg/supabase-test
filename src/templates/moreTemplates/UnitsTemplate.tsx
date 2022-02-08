@@ -18,7 +18,12 @@ export default function UnitsTemplate() {
 
   return (
     <>
-      <Typography variant="h3" gutterBottom>
+      <Typography
+        variant="h2"
+        sx={{
+          mb: 4,
+        }}
+      >
         Units
       </Typography>
       <UnitsTable data={data} />

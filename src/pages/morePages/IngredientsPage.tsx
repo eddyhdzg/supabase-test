@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useHeader } from "hooks";
-import { QuantitiesTemplate } from "templates";
+import { IngredientsTemplate } from "templates";
 import { Seo } from "components";
 
-export default function QuantitiesPage() {
+export default function IngredientsPage() {
   const { onChangeRoute } = useHeader();
 
   useEffect(() => {
@@ -12,8 +12,8 @@ export default function QuantitiesPage() {
 
   return (
     <>
-      <Seo title={`Quantities`} description="Quantities page." />
-      <QuantitiesTemplate />
+      <Seo title={`Ingredients`} description="Ingredients page." />
+      <IngredientsTemplate />
     </>
   );
 }

@@ -1,7 +1,7 @@
-import { useQuantitiesColumns } from "hooks";
+import { useIngredientsColumns } from "hooks";
 import { useSearchParams } from "react-router-dom";
 import { useTable } from "react-table";
-import { QuantityRowData } from "types";
+import { IngredientRowData } from "types";
 import { useEffect, useMemo } from "react";
 import {
   useFilters,
@@ -11,24 +11,24 @@ import {
 } from "react-table";
 import { useFuzzyGlobalFilter } from "hooks";
 import { fuzzyTextFilterFn } from "utils";
-import { quantitiesSearchFilters } from "constant";
+import { ingredientsSearchFilters } from "constant";
 
-type useQuantitiesTableProps = QuantityRowData[];
+type useIngredientsTableProps = IngredientRowData[];
 
-export default function useQuantitiesTable(data: useQuantitiesTableProps) {
+export default function useIngredientsTable(data: useIngredientsTableProps) {
   const [searchParams] = useSearchParams();
   const search = searchParams.get("search");
-  const globalFilter = useFuzzyGlobalFilter(quantitiesSearchFilters);
+  const globalFilter = useFuzzyGlobalFilter(ingredientsSearchFilters);
   const filterTypes = useMemo(
     () => ({
       fuzzyText: fuzzyTextFilterFn,
     }),
     []
   );
-  const columns = useQuantitiesColumns();
+  const columns = useIngredientsColumns();
 
   const { setGlobalFilter, getTableProps, headerGroups, rows, prepareRow } =
-    useTable<QuantityRowData>(
+    useTable<IngredientRowData>(
       {
         columns,
         data,

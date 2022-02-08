@@ -1,2 +1,2 @@
-export * from "./quantitiesForms";
+export * from "./ingredientsForms";
 export * from "./unitsForms";

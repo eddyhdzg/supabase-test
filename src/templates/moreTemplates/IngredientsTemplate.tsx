@@ -8,32 +8,37 @@ import {
   Paper,
   TableContainer,
 } from "@mui/material";
-import { useQuantitiesRowData, useQuantitiesTable } from "hooks";
+import { useIngredientsRowData, useIngredientsTable } from "hooks";
 import { HeaderGroup, Cell } from "react-table";
-import { QuantityRowData } from "types";
-import { CreateQuantityForm } from "forms";
+import { IngredientRowData } from "types";
+import { CreateIngredientForm } from "forms";
 
-export default function QuantitiesTemplate() {
-  const { data = [] } = useQuantitiesRowData();
+export default function IngredientsTemplate() {
+  const { data = [] } = useIngredientsRowData();
 
   return (
     <>
-      <Typography variant="h3" gutterBottom>
-        Quantities
+      <Typography
+        variant="h2"
+        sx={{
+          mb: 4,
+        }}
+      >
+        Ingredients
       </Typography>
-      <QuantitiesTable data={data} />
-      <CreateQuantityForm />
+      <IngredientsTable data={data} />
+      <CreateIngredientForm />
     </>
   );
 }
 
-interface QuantitiesTableProps {
-  data: QuantityRowData[];
+interface IngredientsTableProps {
+  data: IngredientRowData[];
 }
 
-function QuantitiesTable({ data }: QuantitiesTableProps) {
+function IngredientsTable({ data }: IngredientsTableProps) {
   const { getTableProps, headerGroups, rows, prepareRow } =
-    useQuantitiesTable(data);
+    useIngredientsTable(data);
 
   return (
     <Paper elevation={3}>
@@ -48,13 +53,13 @@ function QuantitiesTable({ data }: QuantitiesTableProps) {
           },
         }}
       >
-        <Table aria-label="quantities table" {...getTableProps()}>
+        <Table aria-label="ingredients table" {...getTableProps()}>
           <TableHead>
             {headerGroups.map((headerGroup) => (
               <TableRow {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map(
                   (
-                    column: HeaderGroup<QuantityRowData> & {
+                    column: HeaderGroup<IngredientRowData> & {
                       tabIndex?: number;
                       className?: string;
                     }
@@ -91,7 +96,7 @@ function QuantitiesTable({ data }: QuantitiesTableProps) {
                 <TableRow {...row.getRowProps()}>
                   {row.cells.map(
                     (
-                      cell: Cell<QuantityRowData> & {
+                      cell: Cell<IngredientRowData> & {
                         column: {
                           className?: string;
                         };

@@ -1,17 +1,17 @@
-import { useDeleteQuantity } from "hooks";
-import { Quantity } from "types";
+import { useDeleteIngredient } from "hooks";
+import { Ingredient } from "types";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-interface DeleteQuantityFormProps extends Pick<Quantity, "id"> {
+interface DeleteIngredientFormProps extends Pick<Ingredient, "id"> {
   disabled?: boolean;
 }
 
-export default function DeleteQuantityForm({
+export default function DeleteIngredientForm({
   id = "",
   disabled,
-}: DeleteQuantityFormProps) {
-  const deleteQuantity = useDeleteQuantity();
+}: DeleteIngredientFormProps) {
+  const deleteIngredient = useDeleteIngredient();
 
   return (
     <IconButton
@@ -19,7 +19,7 @@ export default function DeleteQuantityForm({
       size="large"
       disabled={disabled}
       onClick={() => {
-        deleteQuantity.mutate({ id });
+        deleteIngredient.mutate({ id });
       }}
     >
       <DeleteIcon />

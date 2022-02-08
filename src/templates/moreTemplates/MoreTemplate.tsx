@@ -4,7 +4,12 @@ import { SectionLink } from "components";
 export default function MoreTemplate() {
   return (
     <>
-      <Typography variant="h3" gutterBottom>
+      <Typography
+        variant="h2"
+        sx={{
+          mb: 4,
+        }}
+      >
         More
       </Typography>
 
@@ -16,14 +21,6 @@ export default function MoreTemplate() {
             gap: 2,
           }}
         >
-          <SectionLink to="/more/quantities">
-            <Typography variant="h4" gutterBottom>
-              🔢
-            </Typography>
-            <Typography variant="h6" gutterBottom>
-              Quantities
-            </Typography>
-          </SectionLink>
           <SectionLink to="/more/units">
             <Typography variant="h4" gutterBottom>
               📏

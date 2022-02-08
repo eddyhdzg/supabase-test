@@ -1,4 +1,4 @@
-import { forwardRef, useState } from "react";
+import { useState } from "react";
 import {
   Button,
   Fab,
@@ -15,22 +15,21 @@ import { TransitionProps } from "@mui/material/transitions";
 import AddIcon from "@mui/icons-material/Add";
 import { useTheme } from "@mui/material/styles";
 import { Controller, useFormContext } from "react-hook-form";
-import { NumberFormatInput } from "components";
 import { SubmitForm } from "types";
-import { CreateQuantitySchema } from "hooks";
+import { CreateIngredientSchema } from "hooks";
 import { Transition } from "components";
 
-interface CreateQuantityFormLayoutProps {
+interface CreateIngredientFormLayoutProps {
   onSubmit: SubmitForm;
 }
 
-export default function CreateQuantityFormLayout({
+export default function CreateIngredientFormLayout({
   onSubmit,
-}: CreateQuantityFormLayoutProps) {
+}: CreateIngredientFormLayoutProps) {
   const {
     control,
     formState: { isValid },
-  } = useFormContext<CreateQuantitySchema>();
+  } = useFormContext<CreateIngredientSchema>();
 
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -68,7 +67,7 @@ export default function CreateQuantityFormLayout({
             right: 16,
           }}
           color="secondary"
-          aria-label="create-quantity"
+          aria-label="create-ingredient"
           onClick={handleClickOpen}
         >
           <AddIcon />
@@ -79,31 +78,22 @@ export default function CreateQuantityFormLayout({
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
-        aria-describedby="create-quantity-dialog"
+        aria-describedby="create-ingredient-dialog"
         maxWidth="xs"
       >
         <form noValidate autoComplete="off" onSubmit={onSubmit}>
-          <DialogTitle>Create new quantity</DialogTitle>
+          <DialogTitle>Create new Ingredient</DialogTitle>
           <DialogContent>
             <Controller
-              name="quantity"
+              name="ingredient"
               control={control}
               render={({ field, fieldState }) => {
                 return (
                   <FormControl>
                     <TextField
-                      id="quantity-input"
+                      id="ingredient-input"
                       variant="outlined"
                       error={Boolean(fieldState.error)}
-                      inputProps={{
-                        inputMode: "decimal",
-                        min: 0,
-                        thousandSeparator: true,
-                        decimalScale: 4,
-                      }}
-                      InputProps={{
-                        inputComponent: NumberFormatInput as any,
-                      }}
                       sx={{
                         mt: 2,
                       }}

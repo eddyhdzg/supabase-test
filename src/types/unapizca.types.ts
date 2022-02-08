@@ -40,14 +40,14 @@ export interface CustomerRow {
   text: string | undefined;
 }
 
-export interface Quantity {
+export interface Ingredient {
   id?: string;
-  quantity?: number;
+  ingredient?: string;
 }
 
-export interface QuantityRowData {
+export interface IngredientRowData {
   id?: string;
-  quantity?: number;
+  ingredient?: string;
   usedIn?: string;
 }
 

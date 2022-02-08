@@ -16,7 +16,12 @@ export default function CustomersTemplate() {
   const { data = [] } = useCustomers();
   return (
     <>
-      <Typography variant="h3" gutterBottom>
+      <Typography
+        variant="h2"
+        sx={{
+          mb: 4,
+        }}
+      >
         Customers
       </Typography>
       <CustomerTable data={data} />

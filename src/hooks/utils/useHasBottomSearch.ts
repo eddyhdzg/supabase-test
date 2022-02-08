@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function useHasBottomSearch() {
-  const urls = new Set<string>(["/customers", "/recipes", "/more/quantities"]);
+  const urls = new Set<string>(["/customers", "/recipes", "/ingredients"]);
   const [hasBottomSearch, setHasBottomSearch] = useState(false);
   const { pathname } = useLocation();
 

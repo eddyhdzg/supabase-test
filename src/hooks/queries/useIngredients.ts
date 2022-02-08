@@ -1,10 +1,10 @@
 import { useQuery } from "react-query";
 import { supabase } from "lib/api";
-import { Quantity } from "types";
+import { Ingredient } from "types";
 
-const fetchQuantities = async () => {
+const fetchIngredients = async () => {
   const { data, error } = await supabase
-    .from<Quantity>("quantities")
+    .from<Ingredient>("ingredients")
     .select("*")
     .order("id", { ascending: false });
 
@@ -15,6 +15,6 @@ const fetchQuantities = async () => {
   return data || [];
 };
 
-export default function useQuantities() {
-  return useQuery("quantities", () => fetchQuantities());
+export default function useIngredients() {
+  return useQuery("ingredients", () => fetchIngredients());
 }

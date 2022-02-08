@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 import { Column, Row } from "react-table";
-import { QuantityRowData } from "types";
-import { UpdateQuantityForm } from "forms";
-import { DeleteQuantityForm } from "forms";
+import { IngredientRowData } from "types";
+import { UpdateIngredientForm } from "forms";
+import { DeleteIngredientForm } from "forms";
 
-const useQuantitiesColumns = () => {
+const useIngredientsColumns = () => {
   const columns = useMemo(
     () => [
       {
@@ -13,18 +13,20 @@ const useQuantitiesColumns = () => {
         accessor: "id",
       },
       {
-        id: "quantity",
-        Header: "Quantity",
-        accessor: "quantity",
+        id: "ingredient",
+        Header: "Ingredient",
+        accessor: "ingredient",
         className: "alignRight",
         Cell: ({
           value,
           row,
         }: {
-          value: QuantityRowData["quantity"];
-          row: Row<QuantityRowData>;
+          value: IngredientRowData["ingredient"];
+          row: Row<IngredientRowData>;
         }) => {
-          return <UpdateQuantityForm id={row.original.id} quantity={value} />;
+          return (
+            <UpdateIngredientForm id={row.original.id} ingredient={value} />
+          );
         },
       },
       {
@@ -42,11 +44,11 @@ const useQuantitiesColumns = () => {
           value,
           row,
         }: {
-          value: QuantityRowData["quantity"];
-          row: Row<QuantityRowData>;
+          value: IngredientRowData["ingredient"];
+          row: Row<IngredientRowData>;
         }) => {
           return (
-            <DeleteQuantityForm
+            <DeleteIngredientForm
               id={row.original.id}
               disabled={Boolean(value)}
             />
@@ -56,7 +58,7 @@ const useQuantitiesColumns = () => {
     ],
     []
   );
-  return columns as readonly Column<QuantityRowData>[];
+  return columns as readonly Column<IngredientRowData>[];
 };
 
-export default useQuantitiesColumns;
+export default useIngredientsColumns;

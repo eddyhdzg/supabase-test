@@ -3,7 +3,7 @@ import {
   CustomersPage,
   CustomerPage,
   MorePage,
-  QuantitiesPage,
+  IngredientsPage,
   UnitsPage,
 } from "pages";
 
@@ -12,8 +12,8 @@ export default function Router() {
     <Routes>
       <Route path="/customers" element={<CustomersPage />} />
       <Route path="/customers/:id" element={<CustomerPage />} />
+      <Route path="/ingredients" element={<IngredientsPage />} />
       <Route path="/more" element={<MorePage />} />
-      <Route path="/more/quantities" element={<QuantitiesPage />} />
       <Route path="/more/units" element={<UnitsPage />} />
       <Route path="*" element={<Navigate to="/customers" />} />
     </Routes>
