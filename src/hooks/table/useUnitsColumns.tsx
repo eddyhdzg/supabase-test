@@ -42,7 +42,7 @@ const useUnitsColumns = () => {
           value,
           row,
         }: {
-          value: UnitRowData["unit"];
+          value: UnitRowData["usedIn"];
           row: Row<UnitRowData>;
         }) => {
           return (

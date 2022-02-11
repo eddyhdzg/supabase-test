@@ -61,3 +61,21 @@ export interface UnitRowData {
   unit?: string;
   usedIn?: string;
 }
+
+export interface Recipe {
+  id?: number | string;
+  name?: string;
+  description?: string;
+  time?: number;
+  calories?: number;
+  url?: string;
+  // pastDates
+}
+
+export interface WixRecipes {
+  title: string;
+  _createdDate: ISOString;
+  _id: string;
+  _owner: string;
+  _updatedDate: ISOString;
+}

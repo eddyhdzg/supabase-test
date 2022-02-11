@@ -9,7 +9,6 @@ import shallow from "zustand/shallow";
 import { AppBar } from "./Header.styled";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import GoogleIcon from "@mui/icons-material/Google";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
@@ -73,7 +72,7 @@ export default function Header({ open, onDrawerToggle }: HeaderProps) {
                   },
                 }}
               >
-                {open ? <ChevronLeftIcon /> : <MenuIcon />}
+                <MenuIcon />
               </IconButton>
               {backButton.text && backButton.url && (
                 <Button

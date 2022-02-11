@@ -14,3 +14,4 @@ export const customersSearchFilters = [
 
 export const ingredientsSearchFilters = ["id", "ingredient", "usedIn"];
 export const unitsSearchFilters = ["id", "units", "usedIn"];
+export const recipesSearchFilters = ["id", "name", "description", "calories"];

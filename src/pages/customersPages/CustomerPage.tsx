@@ -8,11 +8,10 @@ export default function CustomerPage() {
   const { onChangeRoute } = useHeader();
   const { id } = useParams();
   const { data } = useCustomer(id);
-
   const name = `${data?.firstName || ""} ${data?.lastName || ""}`;
 
   useEffect(() => {
-    onChangeRoute({ text: "Customer", url: "/customers" });
+    onChangeRoute({ text: "Customers", url: "/customers" });
   }, [onChangeRoute]);
 
   return (
